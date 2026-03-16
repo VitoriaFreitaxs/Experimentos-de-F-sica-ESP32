@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "author": "Vitoria Freitas",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-breadboard-half",
+      "id": "bb1",
+      "top": 150.2,
+      "left": 138.6,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -9.6, "left": -14.36, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -9.9,
+      "left": 426.5,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -80,
+      "left": 149.6,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:5V", "bb1:bp.25", "red", [ "h-23.81", "v19.2", "h144", "v-48" ] ],
+    [ "esp:GND.2", "bb1:bn.25", "black", [ "v0", "h24.04", "v124.8" ] ],
+    [ "lcd1:GND", "bb1:bn.23", "black", [ "h-19.2", "v172.8", "h48" ] ],
+    [ "lcd1:VCC", "bb1:bp.21", "red", [ "h-9.6", "v144.1", "h57.6" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h-38.4", "v115.4" ] ],
+    [ "lcd1:SCL", "esp:22", "orange", [ "h-57.6", "v57.9" ] ]
+  ],
+  "dependencies": {}
+}
